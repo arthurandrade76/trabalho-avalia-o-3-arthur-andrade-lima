@@ -103,5 +103,345 @@
       "Drivers": "50mm Titânio",
       "Bateria": "Até 50 horas"
     }
+  },
+  {
+    "name": "Teclado Mecânico ASUS ROG Azoth 75% OLED",
+    "description": "Teclado mecânico sem fio com display OLED integrado, switches ROG NX pré-lubrificados, amortecimento em silicone de 3 camadas e conexão Tri-Mode.",
+    "category": "Teclados",
+    "brand": "ASUS ROG",
+    "price": 1499.99,
+    "oldPrice": 1899.99,
+    "discountPercent": 21,
+    "imageUrl": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80",
+    "rating": 5.0,
+    "reviewsCount": 87,
+    "specs": {
+      "Switch": "ROG NX Red",
+      "Display": "OLED 2 Polegadas",
+      "Conexao": "2.4GHz / Bluetooth / USB-C"
+    }
+  },
+  {
+    "name": "Teclado Mecânico Razer Huntsman V3 Pro Analog",
+    "description": "Teclado competitivo com switches ópticos analógicos de 2ª geração, modo Rapid Trigger ajustável de 0.1mm a 4.0mm e apoio de pulso magnético.",
+    "category": "Teclados",
+    "brand": "Razer",
+    "price": 1349.99,
+    "oldPrice": 1699.99,
+    "discountPercent": 20,
+    "imageUrl": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.9,
+    "reviewsCount": 143,
+    "specs": {
+      "Switch": "Óptico Analógico Gen-2",
+      "Recurso": "Rapid Trigger",
+      "Estrutura": "Alumínio Escovado"
+    }
+  },
+  {
+    "name": "Teclado Mecânico Corsair K70 Max RGB Magnético",
+    "description": "Switches magnéticos-mecânicos Corsair MGX com ponto de atuação ajustável por tecla, polling rate de 8000Hz AXON e espuma acústica dupla.",
+    "category": "Teclados",
+    "brand": "Corsair",
+    "price": 1099.99,
+    "oldPrice": 1399.99,
+    "discountPercent": 21,
+    "imageUrl": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 76,
+    "specs": {
+      "Switch": "Corsair MGX Magnético",
+      "PollingRate": "8000Hz Hyper-Polling",
+      "Keycaps": "PBT Double-Shot"
+    }
+  },
+  {
+    "name": "Teclado Mecânico Low Profile RGB 65% Wireless",
+    "description": "Design ultracompacto 65% de perfil baixo com switches mecânicos táteis silenciosos, chassi em alumínio CNC e autonomia de até 200 horas.",
+    "category": "Teclados",
+    "brand": "Corsair",
+    "price": 649.99,
+    "oldPrice": 799.99,
+    "discountPercent": 19,
+    "imageUrl": "https://images.unsplash.com/photo-1563191911-e65f8655ebf9?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.7,
+    "reviewsCount": 54,
+    "specs": {
+      "Formato": "65% Low Profile",
+      "Bateria": "Até 200 horas",
+      "Peso": "520g"
+    }
+  },
+  {
+    "name": "Teclado Mecânico TKL Pro e-Sports Switch Speed",
+    "description": "Layout Tenkeyless pensado para torneios, cabo USB-C destacável em malha trançada, iluminação RGB por tecla e memória onboard para 5 perfis.",
+    "category": "Teclados",
+    "brand": "ASUS ROG",
+    "price": 579.99,
+    "oldPrice": 749.99,
+    "discountPercent": 23,
+    "imageUrl": "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 112,
+    "specs": {
+      "Switch": "Linear Speed Silver",
+      "Formato": "TKL (80%)",
+      "TaxaResposta": "1000Hz / 1ms"
+    }
+  },
+  {
+    "name": "Monitor Gamer OLED 32\" 4K 240Hz G-Sync",
+    "description": "Painel QD-OLED de 3ª geração com tempo de resposta instantâneo de 0.03ms, taxa de 240Hz em 4K nativo, DisplayHDR True Black 400 e dissipador customizado.",
+    "category": "Monitores",
+    "brand": "ASUS ROG",
+    "price": 6499.99,
+    "oldPrice": 7999.99,
+    "discountPercent": 19,
+    "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+    "rating": 5.0,
+    "reviewsCount": 39,
+    "specs": {
+      "Painel": "QD-OLED 4K",
+      "TaxaAtualizacao": "240Hz",
+      "TempoResposta": "0.03ms (GtG)"
+    }
+  },
+  {
+    "name": "Monitor Gamer Curvo 34\" WQHD 180Hz Ultrawide",
+    "description": "Imersão total em proporção 21:9 com curvatura 1500R, resolução 3440x1440, 99% sRGB e tecnologia Extreme Low Motion Blur Sync.",
+    "category": "Monitores",
+    "brand": "Corsair",
+    "price": 2599.99,
+    "oldPrice": 3299.99,
+    "discountPercent": 21,
+    "imageUrl": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 63,
+    "specs": {
+      "Resolucao": "3440x1440 Ultrawide",
+      "TaxaAtualizacao": "180Hz",
+      "Curvatura": "1500R"
+    }
+  },
+  {
+    "name": "Monitor Gamer 24.5\" FHD 360Hz e-Sports",
+    "description": "Desenvolvido para jogadores profissionais de FPS com painel Fast IPS de 360Hz, analisador de latência NVIDIA Reflex e base compacta.",
+    "category": "Monitores",
+    "brand": "ASUS ROG",
+    "price": 2199.99,
+    "oldPrice": 2799.99,
+    "discountPercent": 21,
+    "imageUrl": "/images/monitor-asus.jpg",
+    "rating": 4.9,
+    "reviewsCount": 81,
+    "specs": {
+      "Resolucao": "1920x1080 (FHD)",
+      "TaxaAtualizacao": "360Hz",
+      "TempoResposta": "0.5ms"
+    }
+  },
+  {
+    "name": "Processador AMD Ryzen 9 7950X3D 16-Core",
+    "description": "Topo de linha absoluto para criação e jogos extremos com 16 núcleos, 32 threads, 144MB de cache total e clock boost de até 5.7GHz.",
+    "category": "Processadores",
+    "brand": "AMD Ryzen",
+    "price": 3899.99,
+    "oldPrice": 4699.99,
+    "discountPercent": 17,
+    "imageUrl": "https://images.unsplash.com/photo-1555617981-dac3880eac6e?auto=format&fit=crop&w=800&q=80",
+    "rating": 5.0,
+    "reviewsCount": 95,
+    "specs": {
+      "Socket": "AM5",
+      "Nucleos": "16 Cores / 32 Threads",
+      "BoostClock": "Até 5.7GHz"
+    }
+  },
+  {
+    "name": "Processador Intel Core i9-14900K 6.0GHz",
+    "description": "Arquitetura híbrida de 24 núcleos (8 P-Cores + 16 E-Cores) e 32 threads, atingindo até 6.0GHz com Thermal Velocity Boost.",
+    "category": "Processadores",
+    "brand": "Intel Core",
+    "price": 3499.99,
+    "oldPrice": 4199.99,
+    "discountPercent": 17,
+    "imageUrl": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.9,
+    "reviewsCount": 108,
+    "specs": {
+      "Socket": "LGA1700",
+      "Nucleos": "24 Cores / 32 Threads",
+      "FrequenciaMax": "6.0GHz"
+    }
+  },
+  {
+    "name": "Processador Intel Core i7-14700K 20-Core",
+    "description": "Equilíbrio perfeito para jogos em 4K e streaming simultâneo com 20 núcleos, 28 threads, 33MB de Intel Smart Cache e suporte DDR5.",
+    "category": "Processadores",
+    "brand": "Intel Core",
+    "price": 2499.99,
+    "oldPrice": 2999.99,
+    "discountPercent": 17,
+    "imageUrl": "https://images.unsplash.com/photo-1555617981-dac3880eac6e?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 74,
+    "specs": {
+      "Socket": "LGA1700",
+      "Nucleos": "20 Cores / 28 Threads",
+      "FrequenciaMax": "5.6GHz"
+    }
+  },
+  {
+    "name": "Placa-Mãe ASUS ROG Crosshair X670E Hero",
+    "description": "Construída para processadores AMD Ryzen série 7000/9000 com 18+2 estágios de potência, dois slots PCIe 5.0 x16 e cinco slots M.2.",
+    "category": "Placas-Mãe",
+    "brand": "ASUS ROG",
+    "price": 3599.99,
+    "oldPrice": 4499.99,
+    "discountPercent": 20,
+    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.9,
+    "reviewsCount": 42,
+    "specs": {
+      "Socket": "AM5",
+      "Chipset": "AMD X670E",
+      "Memoria": "DDR5 até 8000MHz"
+    }
+  },
+  {
+    "name": "Placa-Mãe B650M Elite AX Wi-Fi DDR5",
+    "description": "Formato Micro-ATX robusto com dissipadores térmicos ampliados, slot M.2 PCIe 5.0, LAN 2.5GbE e Wi-Fi 6E integrado.",
+    "category": "Placas-Mãe",
+    "brand": "AMD Ryzen",
+    "price": 1399.99,
+    "oldPrice": 1799.99,
+    "discountPercent": 22,
+    "imageUrl": "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 68,
+    "specs": {
+      "Socket": "AM5",
+      "Chipset": "AMD B650",
+      "Formato": "Micro-ATX"
+    }
+  },
+  {
+    "name": "Placa-Mãe Z790 TUF Gaming Plus Wi-Fi D5",
+    "description": "Componentes de nível militar TUF, VRM DrMOS de 16+1 fases, quatro slots M.2 PCIe 4.0 e iluminação Aura Sync RGB.",
+    "category": "Placas-Mãe",
+    "brand": "Intel Core",
+    "price": 1899.99,
+    "oldPrice": 2399.99,
+    "discountPercent": 21,
+    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 51,
+    "specs": {
+      "Socket": "LGA1700",
+      "Chipset": "Intel Z790",
+      "Formato": "ATX"
+    }
+  },
+  {
+    "name": "Mouse Gamer Razer Viper V3 Pro Ultralight 54g",
+    "description": "Design simétrico ultraleve de 54g desenvolvido com profissionais de e-Sports, sensor óptico de 35.000 DPI e HyperPolling 8000Hz.",
+    "category": "Mouses",
+    "brand": "Razer",
+    "price": 999.99,
+    "oldPrice": 1249.99,
+    "discountPercent": 20,
+    "imageUrl": "https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=800&q=80",
+    "rating": 5.0,
+    "reviewsCount": 134,
+    "specs": {
+      "Peso": "54g Ultralight",
+      "Sensor": "Focus Pro 35K",
+      "PollingRate": "8000Hz Wireless"
+    }
+  },
+  {
+    "name": "Mouse Gamer ASUS ROG Harpe Ace Aim Lab Edition",
+    "description": "Criado em parceria com a Aim Lab com carcaça em bio-nylon de 54g, sensor ROG AimPoint de 36.000 DPI e baixa latência SpeedNova.",
+    "category": "Mouses",
+    "brand": "ASUS ROG",
+    "price": 699.99,
+    "oldPrice": 899.99,
+    "discountPercent": 22,
+    "imageUrl": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.9,
+    "reviewsCount": 59,
+    "specs": {
+      "Peso": "54g",
+      "Sensor": "ROG AimPoint 36K",
+      "Bateria": "Até 90 horas"
+    }
+  },
+  {
+    "name": "Mouse Gamer Corsair M75 Air Wireless",
+    "description": "Formato ambidestro esculpido para máxima velocidade de flick, switches ópticos Quickstrike com zero delay e pés 100% PTFE virgem.",
+    "category": "Mouses",
+    "brand": "Corsair",
+    "price": 549.99,
+    "oldPrice": 699.99,
+    "discountPercent": 21,
+    "imageUrl": "https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 47,
+    "specs": {
+      "Peso": "60g",
+      "Sensor": "Corsair Marksman 26K",
+      "Conexao": "Slipstream Wireless / BT"
+    }
+  },
+  {
+    "name": "Headset Gamer Razer BlackShark V2 Pro Wireless",
+    "description": "Isolamento passivo avançado, microfone HyperClear Super Wideband de alta definição e perfis de áudio calibrados para FPS competitivo.",
+    "category": "Headsets",
+    "brand": "Razer",
+    "price": 1199.99,
+    "oldPrice": 1499.99,
+    "discountPercent": 20,
+    "imageUrl": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.9,
+    "reviewsCount": 115,
+    "specs": {
+      "Drivers": "TriForce Titanium 50mm",
+      "Bateria": "Até 70 horas",
+      "Conexao": "2.4GHz / Bluetooth 5.2"
+    }
+  },
+  {
+    "name": "Headset Gamer Corsair Virtuoso RGB Wireless XT",
+    "description": "Construção em alumínio usinado, áudio de alta fidelidade 24-bit/96kHz, suporte a Dolby Atmos e conexão simultânea Dual-Wireless.",
+    "category": "Headsets",
+    "brand": "Corsair",
+    "price": 1299.99,
+    "oldPrice": 1649.99,
+    "discountPercent": 21,
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 72,
+    "specs": {
+      "Audio": "Dolby Atmos Spatial",
+      "Frequencia": "20Hz - 40.000Hz",
+      "Estrutura": "Alumínio Premium"
+    }
+  },
+  {
+    "name": "Headset Gamer ASUS ROG Delta S Wireless",
+    "description": "Conchas ergonômicas em formato D, microfones AI Beamforming com cancelamento de ruído inteligente e drivers ASUS Essence de 50mm.",
+    "category": "Headsets",
+    "brand": "ASUS ROG",
+    "price": 949.99,
+    "oldPrice": 1199.99,
+    "discountPercent": 21,
+    "imageUrl": "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 53,
+    "specs": {
+      "Drivers": "ASUS Essence 50mm",
+      "Microfone": "AI Beamforming",
+      "Peso": "318g"
+    }
   }
 ]
