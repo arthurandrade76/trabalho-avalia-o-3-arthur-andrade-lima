@@ -1,9 +1,17 @@
 # NEXUS GEAR — E-commerce de Hardware com Persistência Poliglota
 
 > **Trabalho da 3ª Avaliação — Projeto de Banco de Dados**  
-> **Aluno:** Arthur Andrade Lima
+> **Aluno:** Arthur Andrade Lima  
+> **Aplicação Online (Render):** [https://nexus-gear-f9nn.onrender.com/#catalogoSection](https://nexus-gear-f9nn.onrender.com/#catalogoSection)
 
 Aplicação Web de E-commerce e Catálogo de Hardware desenvolvida em **Java 17 (Spring Boot 3)** com interface em **HTML5, Tailwind CSS e JavaScript**, utilizando o conceito de **Banco de Dados Poliglota** para integrar **Supabase (PostgreSQL)**, **MongoDB** e **Redis** de acordo com o melhor caso de uso de cada tecnologia.
+
+---
+
+## Acesso Online (Deploy no Render)
+
+O sistema encontra-se publicado e disponível gratuitamente na nuvem através do Render:
+* **Link da Aplicação:** [https://nexus-gear-f9nn.onrender.com/#catalogoSection](https://nexus-gear-f9nn.onrender.com/#catalogoSection)
 
 ---
 
@@ -28,14 +36,14 @@ Aplicação Web de E-commerce e Catálogo de Hardware desenvolvida em **Java 17 
 ### Módulo Administrativo (Restrito)
 * **Login Seguro (`login.html`):** Autenticação validada no banco PostgreSQL do **Supabase** (com suporte a criação de novos administradores e criptografia `BCrypt`).
 * **Painel de Gestão (`admin.html`):**
-  * Monitoramento em tempo real do status de conexão dos 3 bancos (`Supabase`, `MongoDB` e `Redis`);
   * Cadastro de novos produtos diretamente no **MongoDB** com campos padrão (nome, descrição, categoria, marca, preço, preço antigo, imagem) e atributos flexíveis (`specs`);
   * Exclusão de produtos e atualização imediata no catálogo do cliente;
   * Visualização do histórico de pedidos finalizados via WhatsApp salvos no **Supabase**.
 
 ### Módulo do Cliente (Público)
-* **Catálogo Dinâmico (`index.html`):** Listagem de produtos armazenados no **MongoDB**, com filtros por categoria, marca, faixa de preço, ordenação e busca em tempo real.
-* **Itens Selecionados Recentemente (`Redis`):** Registro instantâneo no cache **Redis** ao visualizar ou interagir com qualquer produto do catálogo.
+* **Catálogo Dinâmico (`index.html`):** Listagem de produtos armazenados no **MongoDB** divididos em vitrines (*Destaques da Semana*, *Novidades*, *Teclados* e *Mouses & Headsets Pro*), com filtros por categoria, marca, faixa de preço, ordenação e busca em tempo real.
+* **Página de Detalhes do Produto (`product.html`):** Exibição individual de cada produto com galeria de imagens em múltiplos ângulos, parcelamento, abas de especificações técnicas dinâmicas vindas do **MongoDB**, produtos relacionados e compra direta.
+* **Itens Vistos Recentemente (`Redis`):** Registro instantâneo no cache **Redis** ao visualizar ou interagir com qualquer produto do catálogo.
 * **Carrinho de Compras e Checkout via WhatsApp:**
   * Adição/remoção de itens, controle de quantidades e cálculo automático de subtotal;
   * Botão **"Comprar via WhatsApp"** que gera o link `https://wa.me/...` e redireciona o cliente com a mensagem formatada:
@@ -101,7 +109,7 @@ CREATE TABLE IF NOT EXISTS public.order_logs (
 
 ---
 
-## Configuração e Execução
+## Configuração e Execução Local
 
 1. **Clone o repositório:**
    ```bash
