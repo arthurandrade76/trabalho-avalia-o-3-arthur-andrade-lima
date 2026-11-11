@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS GEAR | Acessar sua Conta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nexus: {
+                            bg: '#0c0e11',
+                            card: '#181a1f',
+                            input: '#262930',
+                            cyan: '#00e5ff',
+                            cyanHover: '#00b8cc',
+                            border: '#262a33'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0c0e11;
+            background-image: radial-gradient(circle at 50% 45%, rgba(0, 229, 255, 0.07) 0%, rgba(12, 14, 17, 0) 55%);
+        }
+        .cyan-glow {
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.35);
+        }
+        .card-glow {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 229, 255, 0.04);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-gray-200 font-sans">
+
+    <header class="border-b border-nexus-border bg-[#0e1014]/90 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+            <a href="/index.html" class="flex items-center gap-2 text-white font-serif font-bold tracking-wider text-lg">
+                <svg class="w-5 h-5 text-nexus-cyan" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                <span>NEXUS GEAR</span>
+            </a>
+
+            <div class="hidden md:flex flex-1 max-w-md relative">
+                <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </span>
+                <input type="text" placeholder="Buscar hardware, periféricos..."
+                       onclick="window.location.href='/index.html'"
+                       class="w-full bg-[#1c1f24] text-sm text-gray-300 rounded-lg pl-9 pr-4 py-2 border border-transparent focus:border-nexus-cyan focus:outline-none">
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-6 text-xs text-gray-400">
+                <a href="/index.html?cat=Monitores" class="hover:text-nexus-cyan transition">Monitores</a>
+                <a href="/index.html?cat=Mouses" class="hover:text-nexus-cyan transition">Mouses</a>
+                <a href="/index.html?cat=Teclados" class="hover:text-nexus-cyan transition">Teclados</a>
+                <a href="/index.html?cat=Processadores" class="hover:text-nexus-cyan transition">Processadores</a>
+                <a href="/index.html?cat=Placas-Mãe" class="hover:text-nexus-cyan transition">Placas-Mãe</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="/index.html" class="text-xs text-gray-400 hover:text-white transition">Voltar à Loja</a>
+                <a href="/login.html" class="bg-nexus-cyan text-black font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-1.5 cyan-glow">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    Entrar
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 flex items-center justify-center px-4 py-12">
+        <div class="w-full max-w-md bg-nexus-card border border-nexus-border rounded-2xl p-8 card-glow">
+
+            <div class="w-11 h-11 rounded-xl bg-nexus-cyan/10 border border-nexus-cyan/20 flex items-center justify-center mx-auto mb-5">
+                <svg class="w-5 h-5 text-nexus-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+            </div>
+
+            <h1 id="formTitle" class="text-2xl font-serif font-bold text-white text-center mb-1">Acessar sua Conta</h1>
+            <p id="formSubtitle" class="text-xs text-gray-400 text-center mb-6">
+                Entre com seu e-mail e senha para continuar na NexusTech
+            </p>
+
+            <div id="alertBox" class="hidden mb-4 p-3 rounded-lg text-xs font-medium"></div>
+
+            <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                <div id="nameFieldWrapper" class="hidden">
+                    <label class="block text-xs text-gray-300 mb-1.5 font-medium">Nome</label>
+                    <input type="text" id="nameInput" placeholder="Ex: João Silva"
+                           class="w-full bg-nexus-input border border-gray-700/60 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-nexus-cyan transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1.5 font-medium">E-mail</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-3.5 flex items-center text-gray-500">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </span>
+                        <input type="email" id="emailInput" required placeholder="nome@exemplo.com" value="admin@nexusgear.com"
+                               class="w-full bg-nexus-input border border-gray-700/60 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-nexus-cyan transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1.5 font-medium">Senha</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-3.5 flex items-center text-gray-500">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                            </svg>
+                        </span>
+                        <input type="password" id="passwordInput" required placeholder="••••••••••••" value="admin123"
+                               class="w-full bg-nexus-input border border-gray-700/60 rounded-lg pl-10 pr-10 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-nexus-cyan transition">
+                        <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex justify-end">
+                    <a href="#" onclick="event.preventDefault(); fillDefaultCredentials()" class="text-xs text-nexus-cyan hover:underline">
+                        Esqueceu sua senha?
+                    </a>
+                </div>
+
+                <button type="submit" id="submitBtn"
+                        class="w-full bg-nexus-cyan hover:bg-nexus-cyanHover text-black font-semibold py-2.5 rounded-lg text-sm transition flex items-center justify-center gap-2 cyan-glow">
+                    <span id="submitBtnText">Entrar</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </button>
+            </form>
+
+            <p class="text-xs text-gray-400 text-center mt-6">
+                <span id="togglePromptText">Não tem uma conta?</span>
+                <button type="button" onclick="toggleAuthMode()" id="toggleModeBtn" class="text-nexus-cyan hover:underline font-medium ml-1">
+                    Cadastre-se
+                </button>
+            </p>
+        </div>
+    </main>
+
+    <footer class="border-t border-nexus-border py-5 px-6 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 NEXUS GEAR Electronics. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-300">Terms of Service</a>
+                <a href="#" class="hover:text-gray-300">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let isRegisterMode = false;
+
+        function togglePasswordVisibility() {
+            const input = document.getElementById('passwordInput');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        function fillDefaultCredentials() {
+            document.getElementById('emailInput').value = 'admin@nexusgear.com';
+            document.getElementById('passwordInput').value = 'admin123';
+        }
+
+        function toggleAuthMode() {
+            isRegisterMode = !isRegisterMode;
+            document.getElementById('nameFieldWrapper').classList.toggle('hidden', !isRegisterMode);
+            document.getElementById('formTitle').textContent = isRegisterMode ? 'Criar sua Conta' : 'Acessar sua Conta';
+            document.getElementById('submitBtnText').textContent = isRegisterMode ? 'Cadastrar' : 'Entrar';
+            document.getElementById('togglePromptText').textContent = isRegisterMode ? 'Já possui uma conta?' : 'Não tem uma conta?';
+            document.getElementById('toggleModeBtn').textContent = isRegisterMode ? 'Entrar' : 'Cadastre-se';
+            hideAlert();
+        }
+
+        function showAlert(message, isError = true) {
+            const box = document.getElementById('alertBox');
+            box.textContent = message;
+            box.className = `mb-4 p-3 rounded-lg text-xs font-medium border ${
+                isError
+                    ? 'bg-red-500/10 border-red-500/30 text-red-300'
+                    : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+            }`;
+            box.classList.remove('hidden');
+        }
+
+        function hideAlert() {
+            document.getElementById('alertBox').classList.add('hidden');
+        }
+
+        async function handleAuthSubmit(event) {
+            event.preventDefault();
+            hideAlert();
+
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+
+            try {
+                if (isRegisterMode) {
+                    const res = await fetch('/api/auth/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, email, password })
+                    });
+                    const data = await res.json();
+                    if (!res.ok) {
+                        showAlert(data.error || 'Erro ao cadastrar conta.', true);
+                        return;
+                    }
+                    showAlert('Conta criada com sucesso! Entrando...', false);
+                }
+
+                const loginRes = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const loginData = await loginRes.json();
+
+                if (!loginRes.ok) {
+                    showAlert(loginData.error || 'E-mail ou senha inválidos.', true);
+                    return;
+                }
+
+                localStorage.setItem('nexus_admin_token', loginData.token);
+                localStorage.setItem('nexus_admin_name', loginData.name);
+                localStorage.setItem('nexus_admin_email', loginData.email);
+
+                showAlert('Login realizado com sucesso! Redirecionando...', false);
+                setTimeout(() => {
+                    window.location.href = '/admin.html';
+                }, 600);
+            } catch (err) {
+                showAlert('Erro de conexão com o servidor.', true);
+            }
+        }
+    </script>
+</body>
+</html>

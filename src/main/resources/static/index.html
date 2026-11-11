@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS GEAR | Hardware & Periféricos de Alta Performance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nexus: {
+                            bg: '#0c0e11',
+                            card: '#16181d',
+                            input: '#1f2229',
+                            cyan: '#00e5ff',
+                            cyanHover: '#00b8cc',
+                            border: '#252830'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0c0e11;
+        }
+        .cyan-glow {
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.35);
+        }
+        .hero-bg {
+            background: radial-gradient(circle at 80% 50%, rgba(0, 229, 255, 0.14) 0%, rgba(12, 14, 17, 0.96) 65%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-gray-200 font-sans">
+
+    <header class="border-b border-nexus-border bg-[#0e1014]/95 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+            <a href="/index.html" onclick="resetCategoryFilter(event)" class="flex items-center gap-2 text-white font-serif font-bold tracking-wider text-lg shrink-0">
+                <svg class="w-5 h-5 text-nexus-cyan" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                <span>NEXUS GEAR</span>
+            </a>
+
+            <div class="flex-1 max-w-md relative">
+                <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </span>
+                <input type="text" id="searchInput" oninput="applyFilters()" placeholder="Buscar hardware, periféricos..."
+                       class="w-full bg-[#1c1f24] text-sm text-gray-200 rounded-lg pl-9 pr-4 py-2 border border-transparent focus:border-nexus-cyan focus:outline-none">
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-6 text-xs text-gray-300">
+                <button onclick="selectCategory('Monitores')" class="hover:text-nexus-cyan transition">Monitores</button>
+                <button onclick="selectCategory('Mouses')" class="hover:text-nexus-cyan transition">Mouses</button>
+                <button onclick="selectCategory('Teclados')" class="hover:text-nexus-cyan transition">Teclados</button>
+                <button onclick="selectCategory('Processadores')" class="hover:text-nexus-cyan transition">Processadores</button>
+                <button onclick="selectCategory('Placas-Mãe')" class="hover:text-nexus-cyan transition">Placas-Mãe</button>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button onclick="scrollToRecent()" title="Vistos Recentemente" class="text-gray-400 hover:text-nexus-cyan transition relative">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                </button>
+
+                <button onclick="toggleCartDrawer(true)" class="relative text-gray-300 hover:text-nexus-cyan transition p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-nexus-cyan text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                </button>
+
+                <a id="headerAuthBtn" href="/login.html"
+                   class="bg-nexus-cyan hover:bg-nexus-cyanHover text-black font-semibold text-xs px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition cyan-glow">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    <span id="headerAuthBtnText">Entrar</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-bg border-b border-nexus-border">
+        <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+                <span class="inline-flex items-center gap-1.5 bg-nexus-cyan/10 border border-nexus-cyan/30 text-nexus-cyan text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                    ⚡ SUPER OFERTAS DE HARDWARE
+                </span>
+                <h1 class="text-2xl sm:text-3xl font-serif font-bold text-white leading-snug mb-3">
+                    Descontos de até <span class="text-nexus-cyan">40%</span> em Monitores 240Hz & Hardware Extremo
+                </h1>
+                <p class="text-sm text-gray-400 mb-6 max-w-xl leading-relaxed">
+                    Eleve sua estação de combate com processadores de última geração, placas de vídeo de alta performance e periféricos de precisão absoluta.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#catalogoSection" class="bg-nexus-cyan hover:bg-nexus-cyanHover text-black font-semibold text-xs px-5 py-3 rounded-lg flex items-center gap-2 transition cyan-glow">
+                        <span>Explorar Ofertas</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </a>
+                    <a href="#catalogoSection" class="bg-[#1e2128] hover:bg-[#272b34] text-gray-200 font-medium text-xs px-5 py-3 rounded-lg border border-nexus-border transition">
+                        Ver Catálogo
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="rounded-2xl overflow-hidden border border-nexus-cyan/20 shadow-2xl bg-[#101318]">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1000&q=80"
+                         alt="Setup Gamer Nexus Gear"
+                         class="w-full h-64 sm:h-72 object-cover opacity-90">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 pt-8 pb-4 w-full">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-sm font-serif font-semibold text-white">Categorias em Destaque</h2>
+            <button onclick="selectCategory('')" class="text-xs text-nexus-cyan hover:underline">Ver todas</button>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            <button onclick="selectCategory('Monitores')" data-cat="Monitores" class="cat-card bg-nexus-card hover:border-nexus-cyan border border-nexus-border rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition">
+                <div class="w-9 h-9 rounded-lg bg-nexus-cyan/10 text-nexus-cyan flex items-center justify-center">🖥️</div>
+                <span class="text-xs text-gray-300 font-medium">Monitores</span>
+            </button>
+            <button onclick="selectCategory('Mouses')" data-cat="Mouses" class="cat-card bg-nexus-card hover:border-nexus-cyan border border-nexus-border rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition">
+                <div class="w-9 h-9 rounded-lg bg-nexus-cyan/10 text-nexus-cyan flex items-center justify-center">🖱️</div>
+                <span class="text-xs text-gray-300 font-medium">Mouses</span>
+            </button>
+            <button onclick="selectCategory('Teclados')" data-cat="Teclados" class="cat-card bg-nexus-card hover:border-nexus-cyan border border-nexus-border rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition">
+                <div class="w-9 h-9 rounded-lg bg-nexus-cyan/10 text-nexus-cyan flex items-center justify-center">⌨️</div>
+                <span class="text-xs text-gray-300 font-medium">Teclados</span>
+            </button>
+            <button onclick="selectCategory('Processadores')" data-cat="Processadores" class="cat-card bg-nexus-card hover:border-nexus-cyan border border-nexus-border rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition">
+                <div class="w-9 h-9 rounded-lg bg-nexus-cyan/10 text-nexus-cyan flex items-center justify-center">⚡</div>
+                <span class="text-xs text-gray-300 font-medium">Processadores</span>
+            </button>
+            <button onclick="selectCategory('Placas-Mãe')" data-cat="Placas-Mãe" class="cat-card bg-nexus-card hover:border-nexus-cyan border border-nexus-border rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition">
+                <div class="w-9 h-9 rounded-lg bg-nexus-cyan/10 text-nexus-cyan flex items-center justify-center">🎛️</div>
+                <span class="text-xs text-gray-300 font-medium">Placas-Mãe</span>
+            </button>
+            <button onclick="selectCategory('Headsets')" data-cat="Headsets" class="cat-card bg-nexus-card hover:border-nexus-cyan border border-nexus-border rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition">
+                <div class="w-9 h-9 rounded-lg bg-nexus-cyan/10 text-nexus-cyan flex items-center justify-center">🎧</div>
+                <span class="text-xs text-gray-300 font-medium">Headsets</span>
+            </button>
+        </div>
+    </section>
+
+    <main id="catalogoSection" class="max-w-7xl mx-auto px-6 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+        <aside class="lg:col-span-1">
+            <div class="bg-nexus-card border border-nexus-border rounded-xl p-5 sticky top-20 space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-serif font-semibold text-white flex items-center gap-2">
+                        <span class="text-nexus-cyan">☰</span> Filtros
+                    </h3>
+                    <button onclick="resetAllFilters()" class="text-[11px] text-gray-400 hover:text-nexus-cyan">Limpar</button>
+                </div>
+
+                <div>
+                    <p class="text-xs font-medium text-gray-300 mb-2.5">Marcas</p>
+                    <div id="brandsFilterContainer" class="space-y-2 text-xs text-gray-400">
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-white">
+                            <input type="checkbox" value="ASUS ROG" onchange="applyFilters()" class="brand-checkbox accent-[#00e5ff] rounded">
+                            <span>ASUS ROG</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-white">
+                            <input type="checkbox" value="Corsair" onchange="applyFilters()" class="brand-checkbox accent-[#00e5ff] rounded">
+                            <span>Corsair</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-white">
+                            <input type="checkbox" value="AMD Ryzen" onchange="applyFilters()" class="brand-checkbox accent-[#00e5ff] rounded">
+                            <span>AMD Ryzen</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-white">
+                            <input type="checkbox" value="Intel Core" onchange="applyFilters()" class="brand-checkbox accent-[#00e5ff] rounded">
+                            <span>Intel Core</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-white">
+                            <input type="checkbox" value="Razer" onchange="applyFilters()" class="brand-checkbox accent-[#00e5ff] rounded">
+                            <span>Razer</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between text-xs mb-2">
+                        <span class="font-medium text-gray-300">Faixa de Preço</span>
+                        <span id="priceLimitLabel" class="text-nexus-cyan font-semibold">Até R$ 10.000</span>
+                    </div>
+                    <input type="range" id="priceRangeInput" min="100" max="10000" step="100" value="10000"
+                           oninput="updatePriceRangeLabel()"
+                           class="w-full accent-[#00e5ff] cursor-pointer">
+                    <div class="flex justify-between text-[11px] text-gray-500 mt-1">
+                        <span>R$ 100</span>
+                        <span>R$ 10.000+</span>
+                    </div>
+                </div>
+
+                <button onclick="applyFilters()" class="w-full bg-[#22262e] hover:bg-[#2b303b] text-xs text-white font-medium py-2.5 rounded-lg border border-nexus-border transition">
+                    Aplicar Filtros
+                </button>
+            </div>
+        </aside>
+
+        <section class="lg:col-span-3 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                    <h2 id="catalogHeading" class="text-base font-serif font-bold text-white">Destaques da Semana</h2>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <select id="sortSelect" onchange="applyFilters()"
+                            class="bg-nexus-card border border-nexus-border text-xs text-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-nexus-cyan">
+                        <option value="newest">Ordenar por: Mais Vendidos</option>
+                        <option value="price_asc">Menor Preço</option>
+                        <option value="price_desc">Maior Preço</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+
+            <div id="recentSection" class="pt-6 border-t border-nexus-border">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 class="text-sm font-serif font-bold text-white">
+                            Produtos Vistos Recentemente
+                        </h3>
+                    </div>
+                    <button onclick="clearRecentRedis()" class="text-xs text-gray-400 hover:text-nexus-cyan transition">
+                        Limpar Histórico
+                    </button>
+                </div>
+
+                <div id="recentProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <section class="border-t border-nexus-border bg-[#101217] py-12 px-6 mt-10">
+        <div class="max-w-xl mx-auto text-center">
+            <div class="w-10 h-10 rounded-xl bg-nexus-cyan/10 border border-nexus-cyan/20 flex items-center justify-center mx-auto mb-3 text-nexus-cyan">
+                ✉️
+            </div>
+            <h3 class="text-base font-serif font-bold text-white mb-1">Receba Ofertas Exclusivas de Hardware</h3>
+            <p class="text-xs text-gray-400 mb-5">
+                Inscreva-se para receber cupons secretos, lançamentos antecipados e promoções relâmpago diretamente no seu e-mail.
+            </p>
+            <form onsubmit="event.preventDefault(); alert('E-mail cadastrado com sucesso na Nexus Gear!');" class="flex gap-2 max-w-md mx-auto">
+                <input type="email" required placeholder="Seu melhor e-mail..."
+                       class="flex-1 bg-[#181b22] border border-nexus-border rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-nexus-cyan">
+                <button type="submit" class="bg-nexus-cyan hover:bg-nexus-cyanHover text-black font-semibold text-xs px-5 py-2.5 rounded-lg transition">
+                    Inscrever
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="border-t border-nexus-border py-5 px-6 text-xs text-gray-500 bg-[#0b0d10]">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 NEXUS GEAR Electronics. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-300">Terms of Service</a>
+                <a href="#" class="hover:text-gray-300">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cartDrawerBackdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden"></div>
+    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-[#14171d] border-l border-nexus-border z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-5 border-b border-nexus-border flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-nexus-cyan text-lg">🛒</span>
+                <h3 class="font-serif font-bold text-white text-base">Seu Carrinho de Compras</h3>
+            </div>
+            <button onclick="toggleCartDrawer(false)" class="text-gray-400 hover:text-white text-sm">✕</button>
+        </div>
+
+        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+
+        <div class="p-5 border-t border-nexus-border bg-[#0f1116] space-y-4">
+            <div>
+                <label class="block text-[11px] text-gray-400 mb-1">WhatsApp da Loja (DDI+DDD+Número):</label>
+                <input type="text" id="whatsappPhoneInput" value="5511999999999"
+                       class="w-full bg-[#1b1f27] border border-nexus-border rounded-lg px-3 py-1.5 text-xs text-gray-200 focus:outline-none focus:border-nexus-cyan">
+            </div>
+
+            <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-400">Valor Total:</span>
+                <span id="cartTotalValue" class="text-lg font-bold text-nexus-cyan">R$ 0,00</span>
+            </div>
+
+            <div id="whatsappPreviewBox" class="hidden bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-2.5 text-[11px] text-emerald-300"></div>
+
+            <button onclick="checkoutViaWhatsapp()"
+                    class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-lg">
+                <span>Comprar via WhatsApp</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+            </button>
+        </div>
+    </aside>
+
+    <script>
+        let allProducts = [];
+        let selectedCategory = '';
+        let cart = JSON.parse(localStorage.getItem('nexus_cart') || '[]');
+
+        let visitorId = localStorage.getItem('nexus_visitor_id');
+        if (!visitorId) {
+            visitorId = 'user_' + Math.random().toString(36).substring(2, 10);
+            localStorage.setItem('nexus_visitor_id', visitorId);
+        }
+
+        function resolveProductImage(p) {
+            if (!p || !p.imageUrl || p.imageUrl.includes('1527443224154')) {
+                return '/images/monitor-asus.jpg';
+            }
+            return p.imageUrl;
+        }
+
+        function formatBRL(value) {
+            return Number(value || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function checkAdminHeaderButton() {
+            const token = localStorage.getItem('nexus_admin_token');
+            const name = localStorage.getItem('nexus_admin_name');
+            const btn = document.getElementById('headerAuthBtn');
+            const txt = document.getElementById('headerAuthBtnText');
+            if (token) {
+                btn.href = '/admin.html';
+                txt.textContent = name ? name.split(' ')[0] : 'Painel';
+            }
+        }
+
+        async function loadCatalogFromMongo() {
+            try {
+                const res = await fetch('/api/products');
+                allProducts = await res.json();
+                applyFilters();
+            } catch (e) {
+                document.getElementById('productsGrid').innerHTML =
+                    `<div class="col-span-full text-center text-red-400 text-xs py-8">Erro ao carregar produtos.</div>`;
+            }
+        }
+
+        function selectCategory(category) {
+            selectedCategory = category;
+            document.getElementById('catalogHeading').textContent =
+                category ? `Categoria: ${category}` : 'Destaques da Semana';
+
+            document.querySelectorAll('.cat-card').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.classList.add('border-nexus-cyan', 'bg-nexus-cyan/5');
+                } else {
+                    btn.classList.remove('border-nexus-cyan', 'bg-nexus-cyan/5');
+                }
+            });
+            applyFilters();
+        }
+
+        function resetCategoryFilter(e) {
+            e.preventDefault();
+            selectCategory('');
+        }
+
+        function updatePriceRangeLabel() {
+            const val = document.getElementById('priceRangeInput').value;
+            document.getElementById('priceLimitLabel').textContent = `Até ${formatBRL(val)}`;
+            applyFilters();
+        }
+
+        function resetAllFilters() {
+            selectedCategory = '';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('priceRangeInput').value = 10000;
+            document.getElementById('priceLimitLabel').textContent = 'Até R$ 10.000,00';
+            document.querySelectorAll('.brand-checkbox').forEach(cb => cb.checked = false);
+            selectCategory('');
+        }
+
+        function applyFilters() {
+            const search = document.getElementById('searchInput').value.trim().toLowerCase();
+            const maxPrice = parseFloat(document.getElementById('priceRangeInput').value || '10000');
+            const sortMode = document.getElementById('sortSelect').value;
+            const checkedBrands = Array.from(document.querySelectorAll('.brand-checkbox:checked'))
+                .map(cb => cb.value.toLowerCase());
+
+            let filtered = allProducts.filter(p => {
+                if (selectedCategory && (!p.category || p.category.toLowerCase() !== selectedCategory.toLowerCase())) {
+                    return false;
+                }
+                if (search) {
+                    const hay = `${p.name || ''} ${p.description || ''} ${p.brand || ''} ${p.category || ''}`.toLowerCase();
+                    if (!hay.includes(search)) return false;
+                }
+                if (checkedBrands.length > 0) {
+                    const pBrand = (p.brand || '').toLowerCase();
+                    if (!checkedBrands.some(b => pBrand.includes(b))) return false;
+                }
+                if (p.price && p.price > maxPrice && maxPrice < 10000) {
+                    return false;
+                }
+                return true;
+            });
+
+            if (sortMode === 'price_asc') {
+                filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+            } else if (sortMode === 'price_desc') {
+                filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+            }
+
+            renderProductsGrid(filtered);
+        }
+
+        function renderProductsGrid(products) {
+            const grid = document.getElementById('productsGrid');
+            if (!products.length) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-nexus-card border border-nexus-border rounded-xl p-10 text-center text-gray-400 text-xs">
+                        Nenhum produto encontrado para os filtros selecionados.
+                    </div>`;
+                return;
+            }
+
+            grid.innerHTML = products.map(p => {
+                return `
+                <article onclick="selectProductForRedis('${p.id}')"
+                         class="bg-nexus-card border border-nexus-border hover:border-nexus-cyan/60 rounded-xl overflow-hidden flex flex-col transition cursor-pointer group">
+                    <div class="relative h-44 bg-[#101216] overflow-hidden">
+                        ${p.discountPercent ? `<span class="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">${p.discountPercent}% OFF</span>` : ''}
+                        <img src="${resolveProductImage(p)}"
+                             alt="${p.name}"
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    </div>
+
+                    <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+                        <div>
+                            <p class="text-[10px] font-bold uppercase tracking-wider text-nexus-cyan mb-1">
+                                ${p.category || 'HARDWARE'}
+                            </p>
+                            <h3 class="text-sm font-serif font-semibold text-white line-clamp-1">${p.name}</h3>
+
+                            <div class="flex items-center gap-1 text-nexus-cyan text-xs mt-1.5">
+                                <span>☆☆☆☆☆</span>
+                                <span class="text-[11px] text-gray-400">(${p.reviewsCount || 1})</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-end justify-between">
+                            <div>
+                                ${p.oldPrice ? `<p class="text-[11px] text-gray-500 line-through">${formatBRL(p.oldPrice)}</p>` : ''}
+                                <p class="text-base font-bold text-white">${formatBRL(p.price)}</p>
+                            </div>
+                            <button onclick="event.stopPropagation(); addToCart('${p.id}')"
+                                    title="Adicionar ao Carrinho"
+                                    class="bg-nexus-cyan hover:bg-nexus-cyanHover text-black p-2.5 rounded-lg transition cyan-glow">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>`;
+            }).join('');
+        }
+
+        async function selectProductForRedis(productId) {
+            try {
+                const res = await fetch(`/api/recent/${visitorId}/${productId}`, { method: 'POST' });
+                const data = await res.json();
+                renderRecentProducts(data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        async function loadRecentProductsFromRedis() {
+            try {
+                const res = await fetch(`/api/recent/${visitorId}`);
+                const data = await res.json();
+                renderRecentProducts(data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function renderRecentProducts(data) {
+            const container = document.getElementById('recentProductsGrid');
+            const items = (data && data.items) ? data.items : [];
+
+            if (!items.length) {
+                container.innerHTML = `
+                    <div class="col-span-full bg-nexus-card/60 border border-dashed border-nexus-border rounded-xl p-6 text-center text-xs text-gray-500">
+                        Você ainda não visualizou nenhum produto recentemente.
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = items.map(p => `
+                <div class="bg-nexus-card border border-nexus-border rounded-xl p-3 flex items-center gap-3">
+                    <img src="${resolveProductImage(p)}"
+                         class="w-14 h-14 rounded-lg object-cover shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <p class="text-[10px] text-nexus-cyan font-semibold uppercase">${p.category || 'Hardware'}</p>
+                        <h4 class="text-xs font-semibold text-white truncate">${p.name}</h4>
+                        <p class="text-xs font-bold text-gray-200 mt-0.5">${formatBRL(p.price)}</p>
+                    </div>
+                    <button onclick="addToCart('${p.id}')" class="bg-nexus-cyan/15 hover:bg-nexus-cyan text-nexus-cyan hover:text-black text-xs font-bold px-2.5 py-1.5 rounded-lg transition">
+                        +
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        async function clearRecentRedis() {
+            await fetch(`/api/recent/${visitorId}`, { method: 'DELETE' });
+            loadRecentProductsFromRedis();
+        }
+
+        function scrollToRecent() {
+            document.getElementById('recentSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function addToCart(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.productId === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({
+                    productId: product.id,
+                    name: product.name,
+                    price: product.price,
+                    imageUrl: resolveProductImage(product),
+                    quantity: 1
+                });
+            }
+
+            saveAndRenderCart();
+            selectProductForRedis(productId);
+            toggleCartDrawer(true);
+        }
+
+        function updateCartQuantity(productId, delta) {
+            const idx = cart.findIndex(i => i.productId === productId);
+            if (idx === -1) return;
+            cart[idx].quantity += delta;
+            if (cart[idx].quantity <= 0) {
+                cart.splice(idx, 1);
+            }
+            saveAndRenderCart();
+        }
+
+        function saveAndRenderCart() {
+            localStorage.setItem('nexus_cart', JSON.stringify(cart));
+            const totalItems = cart.reduce((acc, i) => acc + i.quantity, 0);
+            const totalPrice = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
+
+            document.getElementById('cartBadge').textContent = totalItems;
+            document.getElementById('cartTotalValue').textContent = formatBRL(totalPrice);
+
+            const container = document.getElementById('cartItemsContainer');
+            const previewBox = document.getElementById('whatsappPreviewBox');
+
+            if (!cart.length) {
+                container.innerHTML = `<p class="text-xs text-gray-500 text-center py-12">Seu carrinho está vazio.</p>`;
+                previewBox.classList.add('hidden');
+                return;
+            }
+
+            const summaryText = cart.map(i => `${i.quantity}x ${i.name}`).join(', ');
+            previewBox.textContent = `"Olá, gostaria de pedir: ${summaryText}. Total: ${formatBRL(totalPrice)}"`;
+            previewBox.classList.remove('hidden');
+
+            container.innerHTML = cart.map(item => `
+                <div class="bg-[#1b1f27] border border-nexus-border rounded-xl p-3 flex items-center gap-3">
+                    <img src="${resolveProductImage(item)}"
+                         class="w-12 h-12 rounded-lg object-cover">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-semibold text-white truncate">${item.name}</h4>
+                        <p class="text-xs text-nexus-cyan font-bold">${formatBRL(item.price)}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="updateCartQuantity('${item.productId}', -1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-xs text-white">-</button>
+                        <span class="text-xs font-semibold w-4 text-center">${item.quantity}</span>
+                        <button onclick="updateCartQuantity('${item.productId}', 1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-xs text-white">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer(open) {
+            const drawer = document.getElementById('cartDrawer');
+            const backdrop = document.getElementById('cartDrawerBackdrop');
+            if (open) {
+                backdrop.classList.remove('hidden');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                backdrop.classList.add('hidden');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        async function checkoutViaWhatsapp() {
+            if (!cart.length) {
+                alert('Adicione pelo menos um produto ao carrinho antes de comprar.');
+                return;
+            }
+            const customPhone = document.getElementById('whatsappPhoneInput').value;
+            try {
+                const res = await fetch('/api/checkout/whatsapp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ items: cart, customPhone })
+                });
+                const data = await res.json();
+                if (res.ok && data.whatsappUrl) {
+                    window.open(data.whatsappUrl, '_blank');
+                } else {
+                    alert(data.error || 'Erro ao gerar pedido para o WhatsApp.');
+                }
+            } catch (e) {
+                alert('Erro de comunicação com o servidor.');
+            }
+        }
+
+        checkAdminHeaderButton();
+        saveAndRenderCart();
+        loadCatalogFromMongo();
+        loadRecentProductsFromRedis();
+    </script>
+</body>
+</html>

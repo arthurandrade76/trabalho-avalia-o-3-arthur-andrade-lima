@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS GEAR | Painel Administrativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nexus: {
+                            bg: '#0c0e11',
+                            card: '#16181d',
+                            input: '#22252d',
+                            cyan: '#00e5ff',
+                            cyanHover: '#00b8cc',
+                            border: '#252830'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0c0e11; }
+        .cyan-glow { box-shadow: 0 0 20px rgba(0, 229, 255, 0.3); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-gray-200 font-sans">
+
+    <header class="border-b border-nexus-border bg-[#0e1014]/95 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <a href="/index.html" class="flex items-center gap-2 text-white font-serif font-bold tracking-wider text-lg">
+                    <svg class="w-5 h-5 text-nexus-cyan" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                    <span>NEXUS GEAR</span>
+                </a>
+                <span class="bg-nexus-cyan/15 text-nexus-cyan border border-nexus-cyan/30 text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full">
+                    Painel Administrativo
+                </span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="text-right hidden sm:block">
+                    <p id="adminNameDisplay" class="text-xs font-semibold text-white">Administrador</p>
+                    <p id="adminEmailDisplay" class="text-[11px] text-nexus-cyan"></p>
+                </div>
+
+                <a href="/index.html" class="bg-[#20242c] hover:bg-[#2a2f3a] text-xs text-white font-medium px-3.5 py-2 rounded-lg border border-nexus-border transition">
+                    Ver Loja
+                </a>
+
+                <button onclick="logoutAdmin()" class="bg-red-500/15 hover:bg-red-500/25 text-red-300 border border-red-500/30 text-xs font-medium px-3.5 py-2 rounded-lg transition">
+                    Sair
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8 flex-1 w-full space-y-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <section class="lg:col-span-5 bg-nexus-card border border-nexus-border rounded-2xl p-6 h-fit">
+                <div class="flex items-center justify-between mb-5">
+                    <div>
+                        <h2 class="text-base font-serif font-bold text-white">Cadastrar Novo Produto</h2>
+                        <p class="text-xs text-gray-400">O item aparecerá imediatamente no catálogo da loja</p>
+                    </div>
+                </div>
+
+                <div id="adminAlert" class="hidden mb-4 p-3 rounded-lg text-xs font-medium"></div>
+
+                <form id="productForm" onsubmit="handleCreateProduct(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-gray-300 mb-1 font-medium">Nome do Produto *</label>
+                        <input type="text" id="prodName" required placeholder="Ex: Placa de Vídeo RTX 4080 Super 16GB"
+                               class="w-full bg-nexus-input border border-nexus-border rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-nexus-cyan">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs text-gray-300 mb-1 font-medium">Categoria *</label>
+                            <select id="prodCategory" class="w-full bg-nexus-input border border-nexus-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-nexus-cyan">
+                                <option value="Monitores">Monitores</option>
+                                <option value="Processadores">Processadores</option>
+                                <option value="Placas-Mãe">Placas-Mãe</option>
+                                <option value="Mouses">Mouses</option>
+                                <option value="Teclados">Teclados</option>
+                                <option value="Headsets">Headsets</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-gray-300 mb-1 font-medium">Marca *</label>
+                            <input type="text" id="prodBrand" required placeholder="Ex: ASUS ROG, Razer..."
+                                   class="w-full bg-nexus-input border border-nexus-border rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-nexus-cyan">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs text-gray-300 mb-1 font-medium">Preço Atual (R$) *</label>
+                            <input type="number" step="0.01" id="prodPrice" required placeholder="1999.90"
+                                   class="w-full bg-nexus-input border border-nexus-border rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-nexus-cyan">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-gray-300 mb-1 font-medium">Preço Antigo (R$)</label>
+                            <input type="number" step="0.01" id="prodOldPrice" placeholder="2499.90"
+                                   class="w-full bg-nexus-input border border-nexus-border rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-nexus-cyan">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-gray-300 mb-1 font-medium">URL da Imagem</label>
+                        <input type="url" id="prodImage" placeholder="https://images.unsplash.com/..."
+                               class="w-full bg-nexus-input border border-nexus-border rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-nexus-cyan">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-gray-300 mb-1 font-medium">Descrição do Produto *</label>
+                        <textarea id="prodDesc" rows="2" required placeholder="Descreva os diferenciais do produto..."
+                                  class="w-full bg-nexus-input border border-nexus-border rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-nexus-cyan"></textarea>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-[#111318] border border-nexus-border space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-semibold text-nexus-cyan">Especificações Técnicas</span>
+                            <button type="button" onclick="addSpecRow()" class="text-[11px] text-nexus-cyan hover:underline">+ Adicionar Especificação</button>
+                        </div>
+                        <div id="specsContainer" class="space-y-2">
+                            <div class="grid grid-cols-2 gap-2 spec-row">
+                                <input type="text" placeholder="Chave (ex: Frequência)" value="Garantia" class="spec-key bg-nexus-input border border-nexus-border rounded px-2.5 py-1.5 text-xs text-white">
+                                <input type="text" placeholder="Valor (ex: 240Hz)" value="12 Meses" class="spec-val bg-nexus-input border border-nexus-border rounded px-2.5 py-1.5 text-xs text-white">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-nexus-cyan hover:bg-nexus-cyanHover text-black font-bold py-3 rounded-xl text-xs transition cyan-glow">
+                        Salvar Produto
+                    </button>
+                </form>
+            </section>
+
+            <section class="lg:col-span-7 space-y-6">
+                <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-base font-serif font-bold text-white">Produtos Cadastrados</h2>
+                        <span id="totalProductsBadge" class="text-xs text-gray-400">0 itens</span>
+                    </div>
+
+                    <div id="adminProductsList" class="space-y-3 max-h-[460px] overflow-y-auto pr-1"></div>
+                </div>
+
+                <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <div>
+                            <h3 class="text-sm font-serif font-bold text-white">Histórico de Pedidos</h3>
+                            <p class="text-[11px] text-gray-400">Últimos pedidos gerados na loja</p>
+                        </div>
+                    </div>
+                    <div id="ordersLogContainer" class="space-y-2 text-xs text-gray-300"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const token = localStorage.getItem('nexus_admin_token');
+        if (!token) {
+            window.location.href = '/login.html';
+        }
+
+        document.getElementById('adminNameDisplay').textContent = localStorage.getItem('nexus_admin_name') || 'Administrador';
+        document.getElementById('adminEmailDisplay').textContent = localStorage.getItem('nexus_admin_email') || '';
+
+        function resolveProductImage(p) {
+            if (!p || !p.imageUrl || p.imageUrl.includes('1527443224154')) {
+                return '/images/monitor-asus.jpg';
+            }
+            return p.imageUrl;
+        }
+
+        function formatBRL(value) {
+            return Number(value || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function addSpecRow() {
+            const div = document.createElement('div');
+            div.className = 'grid grid-cols-2 gap-2 spec-row';
+            div.innerHTML = `
+                <input type="text" placeholder="Chave (ex: Memória)" class="spec-key bg-nexus-input border border-nexus-border rounded px-2.5 py-1.5 text-xs text-white">
+                <input type="text" placeholder="Valor (ex: 16GB GDDR6X)" class="spec-val bg-nexus-input border border-nexus-border rounded px-2.5 py-1.5 text-xs text-white">
+            `;
+            document.getElementById('specsContainer').appendChild(div);
+        }
+
+        function showAdminAlert(msg, isError = false) {
+            const box = document.getElementById('adminAlert');
+            box.textContent = msg;
+            box.className = `mb-4 p-3 rounded-lg text-xs font-medium border ${
+                isError
+                    ? 'bg-red-500/10 border-red-500/30 text-red-300'
+                    : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+            }`;
+            box.classList.remove('hidden');
+        }
+
+        async function loadAdminProducts() {
+            const res = await fetch('/api/products');
+            const products = await res.json();
+            document.getElementById('totalProductsBadge').textContent = `${products.length} produtos`;
+
+            const list = document.getElementById('adminProductsList');
+            list.innerHTML = products.map(p => `
+                <div class="bg-[#1c1f26] border border-nexus-border rounded-xl p-3 flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <img src="${resolveProductImage(p)}"
+                             class="w-12 h-12 rounded-lg object-cover shrink-0">
+                        <div class="min-w-0">
+                            <p class="text-[10px] text-nexus-cyan font-semibold uppercase">${p.category || ''} • ${p.brand || ''}</p>
+                            <h4 class="text-xs font-bold text-white truncate">${p.name}</h4>
+                            <p class="text-xs text-emerald-400 font-semibold">${formatBRL(p.price)}</p>
+                        </div>
+                    </div>
+                    <button onclick="deleteProduct('${p.id}')"
+                            class="text-xs text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 px-3 py-1.5 rounded-lg transition shrink-0">
+                        Excluir
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        async function handleCreateProduct(e) {
+            e.preventDefault();
+            const specs = {};
+            document.querySelectorAll('.spec-row').forEach(row => {
+                const k = row.querySelector('.spec-key').value.trim();
+                const v = row.querySelector('.spec-val').value.trim();
+                if (k && v) specs[k] = v;
+            });
+
+            const payload = {
+                name: document.getElementById('prodName').value,
+                category: document.getElementById('prodCategory').value,
+                brand: document.getElementById('prodBrand').value,
+                price: parseFloat(document.getElementById('prodPrice').value),
+                oldPrice: document.getElementById('prodOldPrice').value ? parseFloat(document.getElementById('prodOldPrice').value) : null,
+                imageUrl: document.getElementById('prodImage').value || '/images/monitor-asus.jpg',
+                description: document.getElementById('prodDesc').value,
+                specs
+            };
+
+            const res = await fetch('/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                showAdminAlert(data.error || 'Erro ao cadastrar produto.', true);
+                if (res.status === 401) setTimeout(() => window.location.href = '/login.html', 1000);
+                return;
+            }
+
+            showAdminAlert(`Produto "${data.name}" cadastrado com sucesso!`, false);
+            document.getElementById('productForm').reset();
+            loadAdminProducts();
+        }
+
+        async function deleteProduct(id) {
+            if (!confirm('Deseja remover este produto?')) return;
+            await fetch(`/api/products/${id}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            loadAdminProducts();
+        }
+
+        async function loadOrdersLog() {
+            try {
+                const res = await fetch('/api/checkout/orders');
+                const orders = await res.json();
+                const container = document.getElementById('ordersLogContainer');
+                if (!orders.length) {
+                    container.innerHTML = `<p class="text-xs text-gray-500">Nenhum pedido registrado ainda.</p>`;
+                    return;
+                }
+                container.innerHTML = orders.map(o => `
+                    <div class="bg-[#1b1f27] border border-nexus-border rounded-lg p-2.5 flex items-center justify-between gap-2">
+                        <span class="truncate text-gray-300">${o.itemsSummary}</span>
+                        <span class="text-nexus-cyan font-bold shrink-0">${formatBRL(o.totalAmount)}</span>
+                    </div>
+                `).join('');
+            } catch (e) {}
+        }
+
+        async function logoutAdmin() {
+            await fetch('/api/auth/logout', {
+                method: 'POST',
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            localStorage.removeItem('nexus_admin_token');
+            window.location.href = '/login.html';
+        }
+
+        loadAdminProducts();
+        loadOrdersLog();
+    </script>
+</body>
+</html>
