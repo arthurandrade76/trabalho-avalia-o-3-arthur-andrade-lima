@@ -1,0 +1,8 @@
+KEYS nexus:recent_products:*
+LREM nexus:recent_products:user_default 0 "product_id"
+LPUSH nexus:recent_products:user_default "product_id"
+LTRIM nexus:recent_products:user_default 0 5
+EXPIRE nexus:recent_products:user_default 86400
+LRANGE nexus:recent_products:user_default 0 5
+TTL nexus:recent_products:user_default
+DEL nexus:recent_products:user_default

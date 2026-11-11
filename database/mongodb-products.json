@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Monitor Gamer 27\" 4K 144Hz IPS",
+    "description": "Monitor profissional para e-Sports com painel Fast IPS, resolução UHD 4K, 1ms de resposta e suporte a G-Sync/FreeSync Premium.",
+    "category": "Monitores",
+    "brand": "ASUS ROG",
+    "price": 2999.99,
+    "oldPrice": 3999.99,
+    "discountPercent": 25,
+    "imageUrl": "/images/monitor-asus.jpg",
+    "rating": 4.9,
+    "reviewsCount": 48,
+    "specs": {
+      "Resolucao": "3840x2160 (4K)",
+      "TaxaAtualizacao": "144Hz",
+      "Painel": "Fast IPS",
+      "TempoResposta": "1ms"
+    }
+  },
+  {
+    "name": "Processador AMD Ryzen 7 7800X3D",
+    "description": "O processador definitivo para jogos com tecnologia AMD 3D V-Cache, 8 núcleos, 16 threads e boost de até 5.0GHz.",
+    "category": "Processadores",
+    "brand": "AMD Ryzen",
+    "price": 2699.99,
+    "oldPrice": 3299.99,
+    "discountPercent": 18,
+    "imageUrl": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80",
+    "rating": 5.0,
+    "reviewsCount": 120,
+    "specs": {
+      "Socket": "AM5",
+      "Nucleos": "8 Cores / 16 Threads",
+      "CacheL3": "96MB 3D V-Cache",
+      "TDP": "120W"
+    }
+  },
+  {
+    "name": "Placa-Mãe ASUS ROG Z790 DDR5",
+    "description": "Placa-mãe high-end com VRM de 20+1 fases, suporte a memória DDR5 até 7800MHz, PCIe 5.0 e Wi-Fi 6E integrado.",
+    "category": "Placas-Mãe",
+    "brand": "ASUS ROG",
+    "price": 2729.99,
+    "oldPrice": 3899.99,
+    "discountPercent": 30,
+    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 35,
+    "specs": {
+      "Chipset": "Intel Z790",
+      "Memoria": "DDR5 Dual Channel",
+      "PCIe": "5.0 x16",
+      "Conectividade": "Wi-Fi 6E + 2.5G LAN"
+    }
+  },
+  {
+    "name": "Mouse Gamer RGB 26000 DPI Wireless",
+    "description": "Mouse ultraleve sem fio com sensor óptico de 26.000 DPI, switches ópticos de 90M de cliques e iluminação RGB Chroma.",
+    "category": "Mouses",
+    "brand": "Razer",
+    "price": 509.99,
+    "oldPrice": 599.99,
+    "discountPercent": 15,
+    "imageUrl": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.9,
+    "reviewsCount": 92,
+    "specs": {
+      "Sensor": "Focus Pro 26K DPI",
+      "Conexao": "HyperSpeed Wireless / USB-C",
+      "Peso": "63g"
+    }
+  },
+  {
+    "name": "Teclado Mecânico Custom Switch Red",
+    "description": "Teclado mecânico compacto 75% com estrutura Gasket Mount, switches lineares lubrificados de fábrica e keycaps PBT Double-Shot.",
+    "category": "Teclados",
+    "brand": "Corsair",
+    "price": 719.99,
+    "oldPrice": 899.99,
+    "discountPercent": 20,
+    "imageUrl": "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.9,
+    "reviewsCount": 210,
+    "specs": {
+      "Switch": "Linear Red Custom",
+      "Formato": "75% Hot-Swappable",
+      "Keycaps": "PBT Double-Shot"
+    }
+  },
+  {
+    "name": "Headset Gamer 7.1 Surround Wireless",
+    "description": "Headset sem fio com áudio espacial THX 7.1 Surround, drivers de titânio de 50mm, microfone cardioide destacável e bateria de 50h.",
+    "category": "Headsets",
+    "brand": "Razer",
+    "price": 599.99,
+    "oldPrice": 799.99,
+    "discountPercent": 25,
+    "imageUrl": "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=800&q=80",
+    "rating": 4.8,
+    "reviewsCount": 64,
+    "specs": {
+      "Audio": "7.1 Surround Espacial",
+      "Drivers": "50mm Titânio",
+      "Bateria": "Até 50 horas"
+    }
+  }
+]
